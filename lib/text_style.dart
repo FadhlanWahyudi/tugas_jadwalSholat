@@ -5,6 +5,6 @@ final baseTextStyle =
 final styleHeader =
     baseTextStyle.copyWith(fontSize: 40.0, fontWeight: FontWeight.w400);
 final styleAddressHeader =
-    baseTextStyle.copyWith(fontSize: 20.0, fontWeight: FontWeight.w400);
+    baseTextStyle.copyWith(fontSize: 25.0, fontWeight: FontWeight.w400);
 final styleListText =
-    baseTextStyle.copyWith(fontSize: 24.0, fontWeight: FontWeight.w400);
+baseTextStyle.copyWith(fontSize: 29.0, fontWeight: FontWeight.w400);

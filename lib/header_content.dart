@@ -24,7 +24,7 @@ class HeaderContent extends StatelessWidget {
               Icon(
                 Icons.location_on,
                 color: Colors.white,
-                size: 20.0,
+                size: 30.0,
               ),
               Text(
                 responseJadwal.results.location.country,

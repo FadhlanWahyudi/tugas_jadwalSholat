@@ -19,7 +19,7 @@ class ListJadwal extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.centerLeft,
-                colors: [Color(0xffADD8E6), Color(0xff2B1B17)])),
+                colors: [Color(0xffE5E4E2), Color(0xff616D7E)])),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

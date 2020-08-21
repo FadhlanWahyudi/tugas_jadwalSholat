@@ -1,11 +1,9 @@
-import 'dart:html';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:tugas_jadwal_sholat/header_content.dart';
 import 'package:tugas_jadwal_sholat/list_jadwal.dart';
-import 'dart:convert';
-
 import 'package:tugas_jadwal_sholat/model/ResponseJadwal.dart';
 
 void main() {
@@ -44,16 +42,16 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
     final header = Stack(
       children: <Widget>[
         Container(
-          height: MediaQuery.of(context).size.width - 120,
+          height: MediaQuery.of(context).size.width - 110,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(30),
+                  bottomRight: Radius.circular(25),
                   bottomLeft: Radius.circular(30)),
               boxShadow: [
                 BoxShadow(
                     blurRadius: 8.0,
-                    offset: Offset(0.2, 2.0),
-                    color: Colors.black12)
+                    offset: Offset(0.4, 4.0),
+                    color: Colors.black45)
               ],
               image: DecorationImage(
                 fit: BoxFit.cover,
@@ -62,7 +60,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
               )),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 25.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
@@ -88,25 +86,28 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                 print(snapshot.error);
                 return Positioned.fill(
                     child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Data Tidak Tersedia",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ));
+                      alignment: Alignment.center,
+                      child: Text("Data Tidak Tersedia",
+                        style: TextStyle(
+                            color: Colors.white
+                        ),),
+                    )
+                );
               }
               return Positioned.fill(
                   child: Align(
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(),
-              ));
-            })
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator(),
+                  )
+              );
+            }
+        )
       ],
     );
     final body = Expanded(
-        child: FutureBuilder(
-            future: getJadwal(
-                location: _locationController.text.toLowerCase().toString()),
+        child: FutureBuilder
+          (future: getJadwal(
+            location: _locationController.text.toLowerCase().toString()),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListJadwal(snapshot.data);
@@ -115,7 +116,8 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                 return Center(child: Text('Data Tidak Tersedia'));
               }
               return Center(child: CircularProgressIndicator());
-            }));
+            }
+        ));
     return Scaffold(
       body: Column(
         children: <Widget>[header, body],
@@ -137,21 +139,16 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
               new FlatButton(
                 onPressed: () {
                   Navigator.of(context).pop();
-                },
-                child: new Text('Batal'),
+                }, child: new Text('Batal',),
               ),
-              new FlatButton(
-                onPressed: () {
-                  Navigator.pop(context, () {
-                    setState(() {
-                      getJadwal(
-                          location: _locationController.text
-                              .toLowerCase()
-                              .toString());
-                    });
+              new FlatButton(onPressed: () {
+                Navigator.pop(context, () {
+                  setState(() {
+                    getJadwal(location: _locationController.text.toLowerCase()
+                        .toString());
                   });
-                },
-                child: new Text('Ok'),
+                });
+              }, child: new Text('Ok'),
               ),
             ],
             shape: RoundedRectangleBorder(
