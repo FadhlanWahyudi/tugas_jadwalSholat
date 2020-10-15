@@ -6,6 +6,8 @@ import 'package:tugas_jadwal_sholat/header_content.dart';
 import 'package:tugas_jadwal_sholat/list_jadwal.dart';
 import 'package:tugas_jadwal_sholat/model/ResponseJadwal.dart';
 
+//buat hacktober fest
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
